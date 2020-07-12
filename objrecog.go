@@ -1,19 +1,12 @@
-// author: Jaideep Ganguly
-//
-// This example uses the Tensorflow (https://www.tensorflow.org/) deep learning framework
-// to classify whatever is in front of the camera.
+// This example uses the Tensorflow (https://www.tensorflow.org/) deep learning framework to classify whatever is in front of the camera.
 //
 // Download the Tensorflow "Inception" model and descriptions file from:
 // https://storage.googleapis.com/download.tensorflow.org/models/inception5h.zip
-//
-// Extract the tensorflow_inception_graph.pb model file from the .zip file.
-//
+// and extract the tensorflow_inception_graph.pb model file from the .zip file.
 // Also extract the imagenet_comp_graph_label_strings.txt file with the descriptions.
 //
-// How to run:
-//
-//		go run objrecog.go 0 inception5h/tensorflow_inception_graph.pb inception5h/imagenet_comp_graph_label_strings.txt opencv cpu
-// +build example
+// Run as:
+// go run objrecog.go 0 inception5h/tensorflow_inception_graph.pb inception5h/imagenet_comp_graph_label_strings.txt opencv cpu
 
 package main
 
@@ -23,7 +16,6 @@ import (
 	"image"
 	"image/color"
 	"os"
-
 	"gocv.io/x/gocv"
 )
 
@@ -118,14 +110,13 @@ func main() {
 		probMat.Close()
 
 		window.IMShow(img)
-		if window.WaitKey(1) >= 0 {
+		if window.WaitKey(500) >= 0 {
 			break
 		}
 	}
 }
 
-// readDescriptions reads the descriptions from a file
-// and returns a slice of its lines.
+// readDescriptions reads the descriptions from a file and returns a slice of its lines.
 func readDescriptions(path string) ([]string, error) {
 	file, err := os.Open(path)
 	if err != nil {
